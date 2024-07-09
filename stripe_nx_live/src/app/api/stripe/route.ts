@@ -10,9 +10,6 @@ export async function POST(request: Request) {
   try {
     const { amount, currency, paymentMethodId } = await request.json();
 
-    // // Log the received data for debugging purposes
-    // console.log("Received data:", { paymentMethodId, amount, currency });
-
     // Validate the input
     if (!paymentMethodId || !amount || !currency) {
       return NextResponse.json(

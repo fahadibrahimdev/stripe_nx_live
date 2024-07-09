@@ -22,11 +22,14 @@ export async function POST(request: Request) {
     }
 
     // Ensure amount is a number and greater than zero can't be a negative or floating point
-    if(typeof amount !== 'number' || amount < 0) {
-        return NextResponse.json(
-            { status: false, error: "amount can't be negative or floating point value" },
-            { status: 400 }
-          );
+    if (typeof amount !== "number" || amount < 0) {
+      return NextResponse.json(
+        {
+          status: false,
+          error: "amount can't be negative or floating point value",
+        },
+        { status: 400 }
+      );
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
